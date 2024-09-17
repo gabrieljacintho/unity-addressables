@@ -5,6 +5,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.AddressableAssets.ResourceLocators;
+using UnityEngine.Events;
 
 [Serializable]
 public class AssetReferenceAudioClip : AssetReferenceT<AudioClip>
@@ -21,6 +22,10 @@ public class AddressablesManager : MonoBehaviour
     [SerializeField] private RawImage _logoRawImage;
 
     private GameObject _playerInstance;
+    private bool _loaded;
+
+    [Space]
+    public UnityEvent OnLoad;
 
 
     private void Start()
@@ -33,11 +38,14 @@ public class AddressablesManager : MonoBehaviour
     {
         Debug.Log("Addressables initialized.");
 
-        _playerAssetReference.InstantiateAsync().Completed += (instance) =>
+        _playerAssetReference.LoadAssetAsync<GameObject>().Completed += prefab =>
         {
-            _playerInstance = instance.Result;
-            _virtualCamera.Follow = _playerInstance.transform.Find("PlayerCameraRoot");
-            Debug.Log("Player instantiated.");
+            _playerAssetReference.InstantiateAsync().Completed += (instance) =>
+            {
+                _playerInstance = instance.Result;
+                _virtualCamera.Follow = _playerInstance.transform.Find("PlayerCameraRoot");
+                Debug.Log("Player instantiated.");
+            };
         };
 
         _musicAssetReference.LoadAssetAsync<AudioClip>().Completed += (audioClip) =>
@@ -62,6 +70,12 @@ public class AddressablesManager : MonoBehaviour
             currentColor.a = 1f;
             _logoRawImage.color = currentColor;
             Debug.Log("Logo loaded.");
+        }
+
+        if (!_loaded && _playerAssetReference.Asset != null && _musicAssetReference.Asset != null && _logoAssetReference.Asset != null)
+        {
+            OnLoad?.Invoke();
+            _loaded = true;
         }
     }
 
