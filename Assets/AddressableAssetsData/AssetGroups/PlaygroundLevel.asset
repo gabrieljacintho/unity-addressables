@@ -42,6 +42,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 707acc8dffb72b144bb1ffbe1c965f3d
+    m_Address: Assets/StarterAssets/FirstPersonController/Scenes/Playground.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 05ef4bb5899e0a54e9d1f25f4fd90235
+    m_Address: Assets/StarterAssets/FirstPersonController/Scenes/Level1.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c48e36193dea234dbdb360e0f46332a
+    m_Address: Assets/StarterAssets/FirstPersonController/Scenes/Level2.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4d16a7100484b53489bb2d7860c78a17, type: 2}
   m_SchemaSet:
