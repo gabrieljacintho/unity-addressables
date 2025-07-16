@@ -1,7 +1,7 @@
 # Unity Addressables
 
 ## Links
-[Addressables Documentation]https://docs.unity3d.com/Packages/com.unity.addressables@2.6/manual/index.html
+[Addressables Documentation](https://docs.unity3d.com/Packages/com.unity.addressables@2.6/manual/index.html)
 
 [Addressables Webinar](https://www.youtube.com/watch?v=C5puKyuFrpM)
 
