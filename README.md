@@ -1,6 +1,65 @@
 # Unity Addressables
+
+## Links
 [Addressables Webinar](https://www.youtube.com/watch?v=C5puKyuFrpM)
 
 [Unity Addressable Tutorials](https://www.youtube.com/playlist?list=PLQMQNmwN3FvwcDh-oo0lHYyqTo7F8V7t6)
 
 [AWS (S3)](https://aws.amazon.com/)
+
+## Custom AssetReference
+```
+[Serializable]
+public class AssetReferenceAudioClip : AssetReferenceT<AudioClip>
+{
+    public AssetReferenceAudioClip(string guid) : base(guid) { }
+}
+```
+```
+[Serializable]
+public class AssetReferenceScene : AssetReference
+{
+   public AssetReferenceScene(string guid) : base(guid) { }
+
+   public override bool ValidateAsset(string path)
+   {
+       return path.EndsWith(".unity");
+   }
+}
+```
+
+## Load Scene
+[SceneLoader.cs](https://github.com/gabrieljacintho/unity-addressables/blob/c6fd6d4a3253afce9ecff2bdfff7c5aa0617d26a/Assets/Scripts/SceneLoader.cs)
+```
+public void LoadScene(AssetReference sceneReference)
+{
+    LoadScene(sceneReference.AssetGUID);
+}
+
+public void LoadScene(string addressableKey)
+{
+    Addressables.LoadSceneAsync(addressableKey, LoadSceneMode.Single);
+}
+```
+
+## Load Asset
+[AddressablesManager.cs](https://github.com/gabrieljacintho/unity-addressables/blob/c6fd6d4a3253afce9ecff2bdfff7c5aa0617d26a/Assets/Scripts/AddressablesManager.cs)
+```
+private AssetReference _playerAssetReference;
+
+private void Start()
+{
+    Addressables.InitializeAsync().Completed += AddressablesManager_Completed;
+}
+
+private void AddressablesManager_Completed(AsyncOperationHandle<IResourceLocator> obj)
+{
+    _playerAssetReference.LoadAssetAsync<GameObject>().Completed += prefab =>
+    {
+        _playerAssetReference.InstantiateAsync().Completed += (instance) =>
+        {
+            _playerInstance = instance.Result;
+        };
+    };
+}
+```
