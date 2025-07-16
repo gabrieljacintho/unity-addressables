@@ -7,7 +7,7 @@
 
 [AWS (S3)](https://aws.amazon.com/)
 
-## Custom AssetReference
+## How to create a custom AssetReference?
 ```
 [Serializable]
 public class AssetReferenceAudioClip : AssetReferenceT<AudioClip>
@@ -28,7 +28,7 @@ public class AssetReferenceScene : AssetReference
 }
 ```
 
-## Load Scene
+## How to load a scene?
 [SceneLoader.cs](https://github.com/gabrieljacintho/unity-addressables/blob/c6fd6d4a3253afce9ecff2bdfff7c5aa0617d26a/Assets/Scripts/SceneLoader.cs)
 ```
 public void LoadScene(AssetReference sceneReference)
@@ -42,7 +42,7 @@ public void LoadScene(string addressableKey)
 }
 ```
 
-## Load Asset
+## How to load an asset?
 [AddressablesManager.cs](https://github.com/gabrieljacintho/unity-addressables/blob/c6fd6d4a3253afce9ecff2bdfff7c5aa0617d26a/Assets/Scripts/AddressablesManager.cs)
 ```
 private AssetReference _playerAssetReference;
@@ -61,5 +61,14 @@ private void AddressablesManager_Completed(AsyncOperationHandle<IResourceLocator
             _playerInstance = instance.Result;
         };
     };
+}
+```
+
+## How to release an asset?
+```
+private void OnDestroy()
+{
+    _playerAssetReference.ReleaseInstance(_playerInstance);
+    _playerAssetReference.ReleaseAsset();
 }
 ```
