@@ -69,6 +69,6 @@ private void AddressablesManager_Completed(AsyncOperationHandle<IResourceLocator
 private void OnDestroy()
 {
     _playerAssetReference.ReleaseInstance(_playerInstance);
-    _playerAssetReference.ReleaseAsset();
+    _logoAssetReference.ReleaseAsset();
 }
 ```
