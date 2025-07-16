@@ -7,7 +7,7 @@
 
 [AWS (S3)](https://aws.amazon.com/)
 
-## How to load an asset?
+## How to load a single asset?
 [AddressablesManager.cs](https://github.com/gabrieljacintho/unity-addressables/blob/c6fd6d4a3253afce9ecff2bdfff7c5aa0617d26a/Assets/Scripts/AddressablesManager.cs)
 ```
 private AssetReference _playerAssetReference;
@@ -36,6 +36,16 @@ private void OnDestroy()
     _playerAssetReference.ReleaseInstance(_playerInstance);
     _logoAssetReference.ReleaseAsset();
 }
+```
+
+## How to load multiple assets?
+```
+ List<string> labels = new List<string>() { "characters", "animals" };
+ Addressables.LoadAssetsAsync<GameObject>(labels, addressable =>
+ {
+     //Gets called for every loaded asset
+     Instantiate(addressable);
+ });
 ```
 
 ## How to load a scene?
