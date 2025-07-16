@@ -6,7 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/StarterAssets/FirstPersonController/Scenes/Initialization.unity
+    path: Assets/Scenes/Initialization.unity
     guid: f06942a6523c9ce4cb2616b121c3bdd5
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 5a090de36f68fb84cbe8fda41b73062d, type: 2}
+  m_UseUCBPForAssetBundles: 0
