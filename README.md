@@ -1,11 +1,11 @@
 # Unity Addressables
 
 ## Links
-[Addressables Documentation](https://docs.unity3d.com/Packages/com.unity.addressables@2.6/manual/index.html)
+[Documentation](https://docs.unity3d.com/Packages/com.unity.addressables@2.6/manual/index.html)
 
-[Addressables Webinar](https://www.youtube.com/watch?v=C5puKyuFrpM)
+[Webinar](https://www.youtube.com/watch?v=C5puKyuFrpM)
 
-[Unity Addressable Tutorials](https://www.youtube.com/playlist?list=PLQMQNmwN3FvwcDh-oo0lHYyqTo7F8V7t6)
+[Tutorials](https://www.youtube.com/playlist?list=PLQMQNmwN3FvwcDh-oo0lHYyqTo7F8V7t6)
 
 [AWS (S3)](https://aws.amazon.com/)
 
